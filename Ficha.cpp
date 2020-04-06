@@ -4,6 +4,7 @@
 
 Ficha::Ficha()
 {
+// Hola
 }
 
 
