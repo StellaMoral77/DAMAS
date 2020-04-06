@@ -3,6 +3,6 @@ class Ficha
 {
 public:
 	Ficha(); //Hola que tal
-	~Ficha();
+	~Ficha(); //hola alonso
 };
 
