@@ -2,7 +2,7 @@
 class Ficha
 {
 public:
-	Ficha();
+	Ficha(); //Hola que tal
 	~Ficha();
 };
 
