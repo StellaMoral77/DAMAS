@@ -90,3 +90,4 @@ int Tablero::GetColumnaSelec()
 {
 	return seleccionada[1];
 }
+//video..
