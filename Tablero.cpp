@@ -10,6 +10,8 @@ Tablero::Tablero()
 	R_borde = 80;
 	G_borde = 45;
 	B_borde = 30;
+	seleccionada[0] = -1;
+	seleccionada[1] = -1;
 }
 void Tablero::Dibuja()
 {
@@ -17,7 +19,11 @@ void Tablero::Dibuja()
 	{
 		for (int j = 0; j < N; j++)
 		{
-			if ((i + j) % 2)
+			if (i == GetFilaSelec() && j == GetColumnaSelec())
+			{
+				glColor3ub(255, 0, 0);
+			}
+			else if ((i + j) % 2)
 			{
 				glColor3ub(R_blancas, G_blancas, B_blancas); //BLANCAS
 			}
@@ -26,10 +32,10 @@ void Tablero::Dibuja()
 				glColor3ub(R_negras, G_negras, B_negras);  //NEGRAS
 			}
 			glBegin(GL_POLYGON);
-			glVertex3f(i * lado_casilla, j * lado_casilla, 0.0f);
-			glVertex3f(i * lado_casilla, (j + 1) * lado_casilla, 0.0f);
-			glVertex3f((i + 1) * lado_casilla, (j + 1) * lado_casilla, 0.0f);
-			glVertex3f((i + 1) * lado_casilla, j * lado_casilla, 0.0f);
+			glVertex3f(j * lado_casilla, i * lado_casilla, 0.0f);
+			glVertex3f(j * lado_casilla, (i + 1) * lado_casilla, 0.0f);
+			glVertex3f((j + 1) * lado_casilla, (i + 1) * lado_casilla, 0.0f);
+			glVertex3f((j + 1) * lado_casilla, i * lado_casilla, 0.0f);
 			glEnd();
 		}
 	}
@@ -67,4 +73,20 @@ void Tablero::SetLadoCasilla(float lado)
 float Tablero::GetLadoCasilla()
 {
 	return lado_casilla;
+}
+void Tablero::SetFilaSelec(int fila)
+{
+	seleccionada[0] = fila;
+}
+void Tablero::SetColumnaSelec(int columna)
+{
+	seleccionada[1] = columna;
+}
+int Tablero::GetFilaSelec()
+{
+	return seleccionada[0];
+}
+int Tablero::GetColumnaSelec()
+{
+	return seleccionada[1];
 }
